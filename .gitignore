@@ -1,0 +1,4 @@
+.venv
+logs/
+output/
+original_project_folder/
