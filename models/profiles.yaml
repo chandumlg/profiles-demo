@@ -42,6 +42,40 @@ models:
         using_ids:
           - id: email
             name: high_value_customers_by_email
+  - name: churn_prediction_model
+    model_type: propensity
+    model_spec:
+      entity_key: user
+      training:
+        predict_var: entity/user/is_churned_7_days
+        predict_window_days: 7
+        validity: week
+        type: classification
+        eligible_users: days_since_last_seen <= 7
+        max_row_count: 50000
+      prediction:
+        output_columns:
+          percentile:
+            name: churn_risk_percentile
+            description: Percentile ranking of churn risk in the next 7 days (0-100)
+            is_feature: true
+          score:
+            name: predicted_churn_probability
+            description: Probability of churning in the next 7 days (0-1)
+            is_feature: false
+        eligible_users: days_since_last_seen <= 7
+      inputs:
+        - entity/user/days_since_last_seen
+        - entity/user/days_since_last_cart_add
+        - entity/user/days_since_last_purchase
+        - entity/user/days_since_first_purchase
+        - entity/user/days_since_account_creation
+        - entity/user/total_sessions_to_date
+        - entity/user/is_subscribed
+        - entity/user/device_count
+        - entity/user/device_count_with_active_subscriptions
+        - entity/user/subscription_invoice_total
+        - entity/user/is_churned_7_days
 # Defining Features
 var_groups:
   - name: no_subscription_cohort_features

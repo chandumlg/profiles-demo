@@ -3,6 +3,9 @@ name: profiles_demo
 # Project's yaml schema version
 
 schema_version: 92
+# Python requirements for propensity models
+python_requirements:
+  - profiles_mlcorelib>=0.8.1
 # WH Connection Profile to use.
 connection: dev
 # Model folders to use.
