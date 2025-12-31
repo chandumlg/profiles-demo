@@ -5,7 +5,7 @@ name: profiles_demo
 schema_version: 92
 # Python requirements for propensity models
 python_requirements:
-  - profiles_mlcorelib>=0.8.1
+  - profiles_mlcorelib
 # WH Connection Profile to use.
 connection: dev
 # Model folders to use.
