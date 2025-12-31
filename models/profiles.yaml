@@ -291,6 +291,11 @@ var_groups:
           from: inputs/rsShopifyOrderCompleted
           description: Self or Pro (who installed the devices)
       - entity_var:
+          name: install_type2
+          select: any_value(array_construct('Self-Install', 'Pro-Install')[ABS(MOD(Random(),2))]::text)
+          from: inputs/rsShopifyOrderCompleted
+          description: Self or Pro (who installed the devices)
+      - entity_var:
           name: device_details
           select: |
             array_agg(
