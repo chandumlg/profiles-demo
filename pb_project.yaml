@@ -2,7 +2,7 @@
 name: profiles_demo
 # Project's yaml schema version
 
-schema_version: 96
+schema_version: 9
 allow_beta: true
 # Python requirements for propensity models
 python_requirements:
